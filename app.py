@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import requests
 import json
+import os
 
 app = Flask(__name__)
 
@@ -29,4 +30,5 @@ def add_lead():
     })
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 5000))  # ← usa el puerto dinámico que Render proporciona
+    app.run(host="0.0.0.0", port=port)
